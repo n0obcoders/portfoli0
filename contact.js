@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(re_gwe4DFjT_FgNMnqDm5Myut2AcVjNbJS6y);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -13,8 +13,8 @@ export default async function handler(req, res) {
 
   try {
     await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'nitinshukla7944@gmail.com',
+      from: 'Your Portfolio <youremail@yourdomain.com>',
+      to: 'yourdestination@email.com',
       subject: `Portfolio Contact Form: ${name}`,
       reply_to: email,
       html: `<p><strong>Name:</strong> ${name}</p>
