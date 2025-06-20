@@ -12,9 +12,11 @@ export default async function handler(req, res) {
   }
 
   try {
+    // NOTE: For free plans, only your Resend signup email is allowed as "to"
+    // To use your own domain, verify it in Resend and change the "from" address
     const data = await resend.emails.send({
-      from: 'onboarding@resend.dev', // Only works for test, and only to your signup address.
-      to: 'nitinshukla7944@gmail.com', // Must match your Resend signup address for free plan/testing.
+      from: 'onboarding@resend.dev',
+      to: 'nitinshukla7944@gmail.com', // Must be your Resend-verified email for testing
       subject: `Portfolio Contact Form: ${name}`,
       reply_to: email,
       html: `<p><strong>Name:</strong> ${name}</p>
@@ -22,8 +24,8 @@ export default async function handler(req, res) {
              <p><strong>Message:</strong><br>${message}</p>`
     });
     res.status(200).json({ success: true, data });
-  } } catch (err) {
-  console.error(err);
-  res.status(500).json({ error: err.message || 'Failed to send email' });
-}
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message, details: err });
+  }
 }
