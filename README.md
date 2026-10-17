@@ -20,35 +20,3 @@ A streaming-style portfolio site with a profile picker, billboard hero, title ro
 | ♿ **Accessible & responsive** | Keyboard navigation, focus trap, skip link, reduced-motion support. It works from 320 px phones up to 4K. |
 | 🔎 **SEO** | Open Graph image, JSON-LD `Person` schema and a custom 404 page. |
 
-## Deploy to GitHub Pages (about 2 minutes)
-
-1. Create a new repository named exactly **`n0obcoders.github.io`**. Using that name puts the site at the root URL.
-2. Upload **everything inside this folder** to the repo root, keeping the `assets/`, `css/` and `js/` folders. *Add file → Upload files* and drag-and-drop works.
-3. Open **Settings → Pages → Build and deployment**, set **Source: Deploy from a branch**, choose **Branch: `main` / root**, then **Save**.
-4. Wait about a minute, then open `https://n0obcoders.github.io/`.
-
-> If you use a different repo name (for example `portfolio`), the site will be served at `https://n0obcoders.github.io/portfolio/`. All paths are relative, so it works either way.
-
-## Editing content
-
-Everything lives in **`js/data.js`**: profile, projects, research, certificates, education and skills.
-
-- **Add a project:** copy one object in `projects` and change it. Set `status` to `"shipped"`, `"building"` or `"research"`. Projects with `"building"` status show up in the *Now Building* row, and their `episodes` list is the roadmap.
-- **Add a certificate:** put the PDF in `assets/certs/` and a preview image in `assets/thumbs/`, then add an entry to `certificates`.
-- **Change the GitHub username:** edit `profile.github`.
-- **Replace the résumé:** overwrite `assets/Nitin_Shukla_Resume.pdf`.
-
-## Structure
-
-```
-index.html          markup
-404.html            custom not-found page
-css/style.css       all styles
-js/data.js          ← your content
-js/main.js          UI: profiles, rows, modals, palette, GitHub feed
-js/pcap.js          pcap/pcapng parser + dissectors + sample capture
-assets/             résumé, certificates, thumbnails, favicon, social image
-.nojekyll           tells GitHub Pages to serve files as-is
-```
-
-The contact form opens the visitor's email app (`mailto:`), so it needs no backend.
