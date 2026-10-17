@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nitin Shukla · Cybersecurity Portfolio</title>
+  <meta name="description" content="Nitin Harishchandra Shukla, a cybersecurity researcher and M.Sc. Cyber Security student in Mumbai. Author of NetworkSentinel (JETIR 2026), a Rust network-reconnaissance and QUIC diagnostics framework." />
+  <meta name="theme-color" content="#0b0b0b" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nitin Shukla · Cybersecurity Portfolio" />
+  <meta property="og:description" content="Published researcher building memory-safe network tooling: packet capture, protocol decoding and RFC 9000 QUIC audits." />
+  <meta property="og:image" content="https://n0obcoders.github.io/assets/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Nitin Harishchandra Shukla","jobTitle":"Cybersecurity Researcher","address":{"@type":"PostalAddress","addressLocality":"Mumbai","addressCountry":"IN"},"alumniOf":"University of Mumbai","sameAs":["https://github.com/n0obcoders"],"knowsAbout":["Network Security","Packet Analysis","QUIC","Rust","Ethical Hacking","OSINT"]}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ============ INTRO / PROFILE GATE ============ -->
+  <div id="gate" class="gate" aria-modal="true" role="dialog" aria-label="Choose a profile">
+    <div class="gate-logo" aria-hidden="true"><span>NITIN</span><span>SHUKLA</span></div>
+    <div class="gate-pick">
+      <h1>Who's viewing?</h1>
+      <div class="profiles" id="profiles"></div>
+      <button class="gate-skip" data-profile="recruiter">Skip intro</button>
+    </div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="brand" aria-label="Home">NITIN<b>SHUKLA</b></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#top">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
+      <a href="#certs">Certifications</a>
+      <a href="#skills">Skills</a>
+      <a href="#lab">PCAP Lab</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <button class="icon-btn" id="searchBtn" aria-label="Search (Ctrl+K)" title="Search · Ctrl+K">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <kbd>Ctrl K</kbd>
+      </button>
+      <button class="avatar" id="avatarBtn" aria-label="Switch profile" title="Switch profile"></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO / BILLBOARD ============ -->
+    <section class="hero" id="top">
+      <canvas id="packets" aria-hidden="true"></canvas>
+      <div class="hero-fade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-kicker"><span class="n-badge">NS</span> <span id="heroKicker">RESEARCH SERIES</span></div>
+        <h2 class="hero-title" id="heroTitle">Nitin Shukla</h2>
+        <div class="hero-meta">
+          <span class="match" id="heroMatch">99% Match</span>
+          <span>2026</span><span class="rating">CYBER-SEC</span><span>Mumbai, IN</span><span class="hd">HD</span>
+        </div>
+        <p class="hero-role"><span id="typed"></span><span class="caret">▍</span></p>
+        <p class="hero-desc" id="heroDesc"></p>
+        <div class="hero-cta">
+          <a class="btn btn-play" id="heroPlay" href="#projects"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg><span>Play</span></a>
+          <button class="btn btn-info" id="heroInfo"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><span>More Info</span></button>
+          <a class="btn btn-ghost" id="resumeBtn" download><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg><span>Resume</span></a>
+        </div>
+        <div class="hero-stats" id="heroStats"></div>
+      </div>
+    </section>
+
+    <!-- ============ ROWS ============ -->
+    <div class="rows" id="rows">
+      <section class="row" id="projects" data-row="projects">
+        <h3 class="row-title">Explore titles related to: <b>Projects</b></h3>
+        <div class="row-track" id="rowProjects"></div>
+      </section>
+
+      <section class="row" id="building" data-row="building">
+        <h3 class="row-title"><span class="live-dot"></span>Now Building <b>· In development</b></h3>
+        <div class="row-track wide" id="rowBuilding"></div>
+      </section>
+
+      <section class="row" id="research" data-row="research">
+        <h3 class="row-title">Published <b>Research</b></h3>
+        <div id="researchBlock"></div>
+      </section>
+
+      <section class="row" id="certs" data-row="certs">
+        <h3 class="row-title">Certifications &amp; <b>Job Simulations</b></h3>
+        <div class="row-track" id="rowCerts"></div>
+      </section>
+
+      <section class="row" id="skills" data-row="skills">
+        <h3 class="row-title">Top 10 <b>Skills</b> right now</h3>
+        <div class="row-track top10" id="rowSkills"></div>
+        <div class="toolbox" id="toolbox"></div>
+      </section>
+
+      <section class="row" id="education" data-row="education">
+        <h3 class="row-title">Education <b>· Seasons</b></h3>
+        <div class="edu" id="eduList"></div>
+      </section>
+
+      <section class="row" id="github" data-row="github">
+        <h3 class="row-title">Fresh from <b>GitHub</b> <a class="row-more" id="ghMore" target="_blank" rel="noopener">See all ›</a></h3>
+        <div class="row-track" id="rowGithub"><div class="gh-loading">Loading repositories…</div></div>
+      </section>
+
+      <!-- ============ PCAP LAB ============ -->
+      <section class="row lab" id="lab" data-row="lab">
+        <h3 class="row-title">PCAP <b>Lab</b> <span class="pill">Interactive · runs 100% in your browser</span></h3>
+        <p class="lab-intro">A preview of the PCAP reader inside <b>SentinelPad</b>. Drop a <code>.pcap</code> or <code>.pcapng</code> file, or load a sample capture. Packets are decoded locally; nothing is uploaded.</p>
+        <div class="lab-shell">
+          <div class="lab-toolbar">
+            <label class="btn btn-small btn-play" for="pcapFile">Open capture</label>
+            <input type="file" id="pcapFile" accept=".pcap,.pcapng,.cap" hidden />
+            <button class="btn btn-small btn-info" id="pcapSample">Load sample capture</button>
+            <input id="pcapFilter" class="lab-filter" placeholder="Filter: tcp, udp, dns, tls, 443, 10.0.0.5, example.com …" aria-label="Display filter" />
+            <span class="lab-count" id="pcapCount"></span>
+          </div>
+          <div class="lab-drop" id="pcapDrop">
+            <svg viewBox="0 0 24 24"><path d="M12 16V4m0 0-4 4m4-4 4 4M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+            <p><b>Drag &amp; drop</b> a capture here</p>
+            <small>Supports pcap (µs/ns, both endians) and pcapng · Ethernet, Linux SLL, raw IP · IPv4/IPv6, ARP, TCP, UDP, ICMP, DNS, HTTP, TLS SNI, QUIC</small>
+          </div>
+          <div class="lab-body" id="pcapBody" hidden>
+            <div class="lab-stats" id="pcapStats"></div>
+            <div class="lab-table-wrap">
+              <table class="lab-table">
+                <thead><tr><th>No.</th><th>Time</th><th>Source</th><th>Destination</th><th>Protocol</th><th>Len</th><th>Info</th></tr></thead>
+                <tbody id="pcapRows"></tbody>
+              </table>
+            </div>
+            <div class="lab-detail">
+              <div class="lab-tree" id="pcapTree"><em>Select a packet to inspect it.</em></div>
+              <pre class="lab-hex" id="pcapHex"></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CONTACT ============ -->
+      <section class="row contact" id="contact" data-row="contact">
+        <div class="contact-card">
+          <h3>Ready for the next episode?</h3>
+          <p>Open to <b>SOC Analyst</b>, <b>Penetration Tester</b> and <b>Cybersecurity Analyst</b> roles and internships. Let's talk.</p>
+          <form id="contactForm" class="contact-form">
+            <input name="name" placeholder="Your name" required aria-label="Your name" />
+            <input name="email" type="email" placeholder="Your email" required aria-label="Your email" />
+            <textarea name="msg" rows="4" placeholder="What are you working on?" required aria-label="Message"></textarea>
+            <button class="btn btn-play" type="submit"><span>Send message</span></button>
+          </form>
+          <div class="contact-links" id="contactLinks"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <p>Questions? <a id="footMail"></a></p>
+    <ul>
+      <li><a href="#projects">Projects</a></li><li><a href="#research">Research</a></li>
+      <li><a href="#certs">Certifications</a></li><li><a href="#lab">PCAP Lab</a></li>
+      <li><a id="footGh" target="_blank" rel="noopener">GitHub</a></li><li><a id="footCv" download>Resume</a></li>
+    </ul>
+    <small>© <span id="yr"></span> Nitin Harishchandra Shukla · Built with plain HTML, CSS &amp; JS · Press <kbd>Ctrl K</kbd> for the command palette</small>
+  </footer>
+
+  <!-- ============ MODAL ============ -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <article class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-x" data-close aria-label="Close">✕</button>
+      <div id="modalContent"></div>
+    </article>
+  </div>
+
+  <!-- ============ COMMAND PALETTE ============ -->
+  <div class="palette" id="palette" hidden>
+    <div class="modal-backdrop" data-pclose></div>
+    <div class="palette-card" role="dialog" aria-modal="true" aria-label="Command palette">
+      <div class="palette-input"><span>❯</span><input id="paletteInput" placeholder="Search projects, certificates, skills… or type a command (help)" autocomplete="off" spellcheck="false" /></div>
+      <ul id="paletteList" class="palette-list" role="listbox"></ul>
+      <pre id="paletteTerm" class="palette-term" hidden></pre>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/pcap.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
