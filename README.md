@@ -31,32 +31,6 @@ The scanner is intentionally **passive OSINT**. It reads public records and a si
 
 No API keys are required. No visitor data is sent anywhere except the public lookup services listed above.
 
-## Deploy to GitHub Pages
-
-The site deploys from the root of the existing **`portfoli0`** repository:
-
-<https://github.com/n0obcoders/portfoli0>
-
-1. Copy this folder's contents into the repository root (keep `.nojekyll`, `assets/`, `css/` and `js/`).
-2. Commit and push to `main`.
-3. In **Settings → Pages**, use **Deploy from a branch → `main` / root**.
-4. Open <https://n0obcoders.github.io/portfoli0/>.
-
-All paths are relative, so the same build also works at a custom domain or under any repository name.
-
-### Windows Git Bash commands
-
-```bash
-cd /c/Users/nitin/OneDrive/Desktop
-cp -r portfolio-v2/. /c/Users/nitin/portfoli0/
-cd /c/Users/nitin/portfoli0
-git status
-git add -A
-git commit -m "Rebuild portfolio with live recon console and current resume"
-git push origin main
-```
-
-Then check **Actions / Pages** in the repository and hard-refresh the live URL.
 
 ## Editing content
 
