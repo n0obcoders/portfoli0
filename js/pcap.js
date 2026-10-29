@@ -377,7 +377,7 @@
     out(web, 6, tcpP(49822, 80, 1000, 0, 0x02), 0.001);
     inn(web, 6, tcpP(80, 49822, 5000, 1001, 0x12), 0.042);
     out(web, 6, tcpP(49822, 80, 1001, 5001, 0x10), 0.0002);
-    const req = str("GET / HTTP/1.1\r\nHost: example.com\r\nUser-Agent: SentinelPad/0.9\r\nAccept: */*\r\n\r\n");
+    const req = str("GET / HTTP/1.1\r\nHost: example.com\r\nUser-Agent: N3Core/1.0\r\nAccept: */*\r\n\r\n");
     out(web, 6, tcpP(49822, 80, 1001, 5001, 0x18, req), 0.0004);
     const resp = str("HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Length: 38\r\nServer: ECAcc\r\n\r\n<html><h1>Example Domain</h1></html>\r\n");
     inn(web, 6, tcpP(80, 49822, 5001, 1001 + req.length, 0x18, resp), 0.044);
@@ -528,7 +528,7 @@
     filter.addEventListener("input", render);
     stats.addEventListener("click", (e) => { const s = e.target.closest("[data-f]"); if (s) { filter.value = s.dataset.f; render(); } });
     file.addEventListener("change", () => { const f = file.files[0]; if (f) f.arrayBuffer().then((b) => load(b, f.name)); file.value = ""; });
-    $("pcapSample").addEventListener("click", () => load(sample(), "sentinel-sample.pcap"));
+    $("pcapSample").addEventListener("click", () => load(sample(), "n3core-sample.pcap"));
     const lab = $("lab");
     ["dragenter", "dragover"].forEach((ev) => lab.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add("over"); }));
     ["dragleave", "drop"].forEach((ev) => lab.addEventListener(ev, (e) => { e.preventDefault(); if (ev === "dragleave" && lab.contains(e.relatedTarget)) return; drop.classList.remove("over"); }));

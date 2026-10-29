@@ -3,45 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nitin Shukla · Cybersecurity Portfolio</title>
-  <meta name="description" content="Nitin Harishchandra Shukla, a cybersecurity researcher and M.Sc. Cyber Security student in Mumbai. Author of NetworkSentinel (JETIR 2026), a Rust network-reconnaissance and QUIC diagnostics framework." />
-  <meta name="theme-color" content="#0b0b0b" />
+  <title>Nitin Shukla · Cybersecurity Researcher &amp; Security Tooling Engineer</title>
+  <meta name="description" content="Nitin Harishchandra Shukla — cybersecurity researcher and M.Sc. Cyber Security student in Mumbai. Published JETIR author and builder of NetworkSentinel, Packetra, N3 Core, Injectra and SessionGram." />
+  <meta name="theme-color" content="#070708" />
+  <meta name="color-scheme" content="dark" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Nitin Shukla · Cybersecurity Portfolio" />
-  <meta property="og:description" content="Published researcher building memory-safe network tooling: packet capture, protocol decoding and RFC 9000 QUIC audits." />
-  <meta property="og:image" content="https://n0obcoders.github.io/assets/og.png" />
+  <meta property="og:title" content="Nitin Shukla · Cybersecurity Researcher" />
+  <meta property="og:description" content="Published researcher building memory-safe network tooling and Android security products. Explore the projects and run the live recon console." />
+  <meta property="og:image" content="https://n0obcoders.github.io/portfoli0/assets/og.png" />
+  <meta property="og:url" content="https://n0obcoders.github.io/portfoli0/" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=20261029" />
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Person","name":"Nitin Harishchandra Shukla","jobTitle":"Cybersecurity Researcher","address":{"@type":"PostalAddress","addressLocality":"Mumbai","addressCountry":"IN"},"alumniOf":"University of Mumbai","sameAs":["https://github.com/n0obcoders"],"knowsAbout":["Network Security","Packet Analysis","QUIC","Rust","Ethical Hacking","OSINT"]}
+  {"@context":"https://schema.org","@type":"Person","name":"Nitin Harishchandra Shukla","jobTitle":"Cybersecurity Researcher","address":{"@type":"PostalAddress","addressLocality":"Mumbai","addressCountry":"IN"},"alumniOf":"University of Mumbai","sameAs":["https://github.com/n0obcoders","https://github.com/n0obcoders/NetworkSentinel","https://github.com/n0obcoders/Packetra","https://github.com/n0obcoders/N3-EDITOR","https://github.com/n0obcoders/Injectra","https://github.com/n0obcoders/SessionGram"],"knowsAbout":["Network Security","Packet Analysis","QUIC","Rust","Android Security","Ethical Hacking","OSINT"]}
   </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <!-- ============ INTRO / PROFILE GATE ============ -->
   <div id="gate" class="gate" aria-modal="true" role="dialog" aria-label="Choose a profile">
+    <div class="gate-bg" aria-hidden="true"><canvas id="gateCanvas"></canvas></div>
+    <div class="gate-scanline" aria-hidden="true"></div>
     <div class="gate-logo" aria-hidden="true"><span>NITIN</span><span>SHUKLA</span></div>
     <div class="gate-pick">
+      <p class="gate-boot"><span class="blink">▮</span> SECURE PORTFOLIO · SELECT VIEW</p>
       <h1>Who's viewing?</h1>
       <div class="profiles" id="profiles"></div>
-      <button class="gate-skip" data-profile="recruiter">Skip intro</button>
+      <button class="gate-skip" data-profile="recruiter">Skip intro <span>→</span></button>
+      <p class="gate-foot">Built with plain HTML, CSS &amp; JavaScript · No trackers · No build step</p>
     </div>
   </div>
 
   <!-- ============ NAV ============ -->
   <header class="nav" id="nav">
-    <a href="#top" class="brand" aria-label="Home">NITIN<b>SHUKLA</b></a>
+    <a href="#top" class="brand" aria-label="Home"><span class="brand-dot"></span>NITIN<b>SHUKLA</b></a>
     <nav class="nav-links" aria-label="Primary">
       <a href="#top">Home</a>
       <a href="#projects">Projects</a>
+      <a href="#recon">Recon</a>
       <a href="#research">Research</a>
-      <a href="#certs">Certifications</a>
-      <a href="#skills">Skills</a>
+      <a href="#certs">Certs</a>
+      <a href="#learning">Learning</a>
       <a href="#lab">PCAP Lab</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -50,7 +58,13 @@
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
         <kbd>Ctrl K</kbd>
       </button>
+      <a class="nav-recon" href="#recon"><span class="pulse-dot"></span> Live recon</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
       <button class="avatar" id="avatarBtn" aria-label="Switch profile" title="Switch profile"></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <a href="#top">Home</a><a href="#projects">Projects</a><a href="#recon">Recon</a><a href="#research">Research</a>
+      <a href="#certs">Certifications</a><a href="#learning">Learning</a><a href="#skills">Skills</a><a href="#lab">PCAP Lab</a><a href="#contact">Contact</a>
     </div>
   </header>
 
@@ -58,10 +72,13 @@
     <!-- ============ HERO / BILLBOARD ============ -->
     <section class="hero" id="top">
       <canvas id="packets" aria-hidden="true"></canvas>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-fade" aria-hidden="true"></div>
+      <div class="hero-scan" aria-hidden="true"></div>
       <div class="hero-inner">
-        <div class="hero-kicker"><span class="n-badge">NS</span> <span id="heroKicker">RESEARCH SERIES</span></div>
-        <h2 class="hero-title" id="heroTitle">Nitin Shukla</h2>
+        <div class="hero-kicker"><span class="n-badge">NS</span> <span id="heroKicker">CYBERSECURITY · ORIGINAL SERIES</span><span class="live-chip"><span class="pulse-dot"></span>OPEN TO WORK</span></div>
+        <h1 class="hero-title" id="heroTitle">Nitin Shukla</h1>
         <div class="hero-meta">
           <span class="match" id="heroMatch">99% Match</span>
           <span>2026</span><span class="rating">CYBER-SEC</span><span>Mumbai, IN</span><span class="hd">HD</span>
@@ -73,52 +90,173 @@
           <button class="btn btn-info" id="heroInfo"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><span>More Info</span></button>
           <a class="btn btn-ghost" id="resumeBtn" download><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg><span>Resume</span></a>
         </div>
+        <p class="hero-quick"><a href="#recon">Run the live recon console <span>→</span></a></p>
         <div class="hero-stats" id="heroStats"></div>
       </div>
+
+      <aside class="hero-side" aria-label="Quick profile">
+        <div class="status-card">
+          <div class="status-head"><span><i class="pulse-dot"></i> SYSTEM ONLINE</span><span>NS / 2026</span></div>
+          <div class="status-row"><span>ROLE</span><b>Cybersecurity Researcher</b></div>
+          <div class="status-row"><span>FOCUS</span><b>Network &amp; Android security</b></div>
+          <div class="status-row"><span>STACK</span><b>Rust · Kotlin · Python</b></div>
+          <div class="status-row"><span>PAPER</span><b>JETIR · Vol. 13, Issue 9</b></div>
+          <div class="status-row"><span>BASED</span><b>Mumbai, India</b></div>
+          <div class="status-term" id="heroTerm" aria-hidden="true"></div>
+          <div class="status-foot"><span class="ok">●</span> QUIC audit <b>A+</b> <span class="sep">/</span> 5 checks passed</div>
+        </div>
+      </aside>
+      <a class="scroll-cue" href="#projects" aria-label="Scroll to projects"><span></span>SCROLL</a>
     </section>
 
-    <!-- ============ ROWS ============ -->
+    <!-- ============ TICKER ============ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>RUST</span><i>◆</i><span>QUIC / RFC 9000</span><i>◆</i><span>PACKET ANALYSIS</span><i>◆</i><span>ANDROID SECURITY</span><i>◆</i><span>OSINT</span><i>◆</i><span>THREAT INTEL</span><i>◆</i><span>PCAP</span><i>◆</i><span>WEB SECURITY</span><i>◆</i><span>DETECTION ENGINEERING</span><i>◆</i>
+        <span>RUST</span><i>◆</i><span>QUIC / RFC 9000</span><i>◆</i><span>PACKET ANALYSIS</span><i>◆</i><span>ANDROID SECURITY</span><i>◆</i><span>OSINT</span><i>◆</i><span>THREAT INTEL</span><i>◆</i><span>PCAP</span><i>◆</i><span>WEB SECURITY</span><i>◆</i><span>DETECTION ENGINEERING</span><i>◆</i>
+      </div>
+    </div>
+
     <div class="rows" id="rows">
+      <!-- ============ PROJECTS ============ -->
       <section class="row" id="projects" data-row="projects">
-        <h3 class="row-title">Explore titles related to: <b>Projects</b></h3>
+        <div class="row-head">
+          <h2 class="row-title">Selected <b>Work</b> <span class="count-pill" id="projectCount"></span></h2>
+          <p class="row-sub">Shipped tools, research and the systems behind them.</p>
+        </div>
         <div class="row-track" id="rowProjects"></div>
       </section>
 
-      <section class="row" id="building" data-row="building">
-        <h3 class="row-title"><span class="live-dot"></span>Now Building <b>· In development</b></h3>
-        <div class="row-track wide" id="rowBuilding"></div>
+      <!-- ============ LIVE RECON ============ -->
+      <section class="row recon-row" id="recon" data-row="recon">
+        <div class="recon-wrap">
+          <div class="recon-head">
+            <div>
+              <h2 class="row-title">Live <b>Recon</b> <span class="pill live"><span class="pulse-dot"></span>PASSIVE OSINT</span></h2>
+              <p class="row-sub">Enter a domain. Get DNS, hosting, certificate transparency, tech stack and a security-header audit — straight in the browser.</p>
+            </div>
+            <div class="recon-sources" aria-hidden="true"><span>DNS</span><span>RDAP</span><span>CT LOGS</span><span>HTTP</span></div>
+          </div>
+
+          <div class="recon-shell" id="reconShell">
+            <div class="recon-top">
+              <form class="recon-form" id="reconForm" novalidate>
+                <span class="recon-prompt">❯</span>
+                <span class="recon-prefix">https://</span>
+                <input id="reconInput" name="target" type="text" placeholder="example.com" autocomplete="off" spellcheck="false" aria-label="Domain to scan" />
+                <button class="btn btn-play recon-run" id="reconRun" type="submit"><span class="run-label">Scan</span><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+              </form>
+              <div class="recon-quick" id="reconQuick">
+                <span>Try</span>
+                <button type="button" data-scan="n0obcoders.github.io/portfoli0">self scan</button>
+                <button type="button" data-scan="github.com">github.com</button>
+                <button type="button" data-scan="cloudflare.com">cloudflare.com</button>
+              </div>
+            </div>
+            <div class="recon-history" id="reconHistory" aria-label="Recent scans"></div>
+            <p class="recon-disclaimer"><b>Passive only.</b> Public DNS, RDAP, Certificate Transparency and the target's own homepage. No payloads, no exploitation, no intrusive probing. Query strings are ignored.</p>
+
+            <div class="recon-stage" id="reconStage" aria-live="polite">
+              <div class="recon-empty" id="reconEmpty">
+                <div class="radar-scene" aria-hidden="true">
+                  <div class="radar"><i class="r1"></i><i class="r2"></i><i class="r3"></i><span class="sweep"></span><b class="blip b1"></b><b class="blip b2"></b><b class="blip b3"></b></div>
+                </div>
+                <div class="recon-empty-copy">
+                  <p class="mono dim">// waiting for target</p>
+                  <h3>Point it at a domain.</h3>
+                  <p>One scan returns the full public footprint: DNS records, mail posture, domain age, ASN, CT-log subdomains, fingerprintable tech and a graded security-header report you can download.</p>
+                  <ul class="recon-feature-list">
+                    <li><span>01</span> DNS &amp; email security</li>
+                    <li><span>02</span> Tech stack fingerprints</li>
+                    <li><span>03</span> Security grade + fixes</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="recon-scanning" id="reconScanning" hidden>
+                <div class="scan-visual">
+                  <div class="scan-radar"><span class="sweep"></span><i></i><i></i><i></i><b class="blip b1"></b><b class="blip b2"></b><b class="blip b3"></b><b class="blip b4"></b></div>
+                  <div class="scan-target" id="scanTarget">example.com</div>
+                  <div class="scan-progress"><i id="scanProgressBar"></i></div>
+                  <div class="scan-progress-label"><span id="scanProgressLabel">initialising</span><b id="scanPercent">0%</b></div>
+                </div>
+                <div class="scan-log-wrap">
+                  <div class="scan-log-head"><span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span><b>recon@n0obcoders:~</b><span class="scan-elapsed" id="scanElapsed">0.0s</span></div>
+                  <pre class="scan-log" id="scanLog"></pre>
+                </div>
+              </div>
+
+              <div class="recon-results" id="reconResults" hidden></div>
+            </div>
+            <div class="recon-foot">
+              <span>Sources: Google DoH · RDAP · Cert Spotter / crt.sh · ipinfo.io · HackerTarget · Jina Reader</span>
+              <span>Results are cached locally for 10 minutes.</span>
+            </div>
+          </div>
+        </div>
       </section>
 
+      <!-- ============ RESEARCH ============ -->
       <section class="row" id="research" data-row="research">
-        <h3 class="row-title">Published <b>Research</b></h3>
+        <div class="row-head">
+          <h2 class="row-title">Published <b>Research</b> <span class="pill">PEER-REVIEWED</span></h2>
+          <p class="row-sub">JETIR 2026 · NetworkSentinel and the five QUIC checks nobody else was running.</p>
+        </div>
         <div id="researchBlock"></div>
       </section>
 
+      <!-- ============ LEARNING ============ -->
+      <section class="row" id="learning" data-row="learning">
+        <div class="row-head">
+          <h2 class="row-title">Currently <b>Learning</b> <span class="pill green">ACTIVE TRACKS</span></h2>
+          <p class="row-sub">Everything is shipped. These are the skills I'm actively sharpening next — self-tracked, not certificates.</p>
+        </div>
+        <div class="row-track learning-track" id="rowLearning"></div>
+      </section>
+
+      <!-- ============ CERTIFICATIONS ============ -->
       <section class="row" id="certs" data-row="certs">
-        <h3 class="row-title">Certifications &amp; <b>Job Simulations</b></h3>
+        <div class="row-head">
+          <h2 class="row-title">Certifications &amp; <b>Job Simulations</b> <span class="count-pill" id="certCount"></span></h2>
+          <p class="row-sub">Internships, Forage simulations and practical course work. Click any card to open the original.</p>
+        </div>
         <div class="row-track" id="rowCerts"></div>
       </section>
 
+      <!-- ============ SKILLS ============ -->
       <section class="row" id="skills" data-row="skills">
-        <h3 class="row-title">Top 10 <b>Skills</b> right now</h3>
+        <div class="row-head">
+          <h2 class="row-title">Top 10 <b>Skills</b> right now</h2>
+          <p class="row-sub">The short list. The full toolbox is underneath.</p>
+        </div>
         <div class="row-track top10" id="rowSkills"></div>
         <div class="toolbox" id="toolbox"></div>
       </section>
 
+      <!-- ============ EDUCATION ============ -->
       <section class="row" id="education" data-row="education">
-        <h3 class="row-title">Education <b>· Seasons</b></h3>
+        <div class="row-head">
+          <h2 class="row-title">Education <b>· Seasons</b></h2>
+          <p class="row-sub">University of Mumbai · Computer Science to Cyber Security.</p>
+        </div>
         <div class="edu" id="eduList"></div>
       </section>
 
+      <!-- ============ GITHUB ============ -->
       <section class="row" id="github" data-row="github">
-        <h3 class="row-title">Fresh from <b>GitHub</b> <a class="row-more" id="ghMore" target="_blank" rel="noopener">See all ›</a></h3>
+        <div class="row-head">
+          <h2 class="row-title">Fresh from <b>GitHub</b> <a class="row-more" id="ghMore" target="_blank" rel="noopener">See all ›</a></h2>
+          <p class="row-sub">Live repositories, pulled straight from the GitHub API.</p>
+        </div>
         <div class="row-track" id="rowGithub"><div class="gh-loading">Loading repositories…</div></div>
       </section>
 
       <!-- ============ PCAP LAB ============ -->
       <section class="row lab" id="lab" data-row="lab">
-        <h3 class="row-title">PCAP <b>Lab</b> <span class="pill">Interactive · runs 100% in your browser</span></h3>
-        <p class="lab-intro">A preview of the PCAP reader inside <b>SentinelPad</b>. Drop a <code>.pcap</code> or <code>.pcapng</code> file, or load a sample capture. Packets are decoded locally; nothing is uploaded.</p>
+        <div class="row-head">
+          <h2 class="row-title">PCAP <b>Lab</b> <span class="pill">Interactive · 100% in-browser</span></h2>
+          <p class="row-sub">A slice of N3 Core's packet reader. Drop a capture and inspect every layer locally — nothing is uploaded.</p>
+        </div>
         <div class="lab-shell">
           <div class="lab-toolbar">
             <label class="btn btn-small btn-play" for="pcapFile">Open capture</label>
@@ -151,13 +289,17 @@
       <!-- ============ CONTACT ============ -->
       <section class="row contact" id="contact" data-row="contact">
         <div class="contact-card">
-          <h3>Ready for the next episode?</h3>
-          <p>Open to <b>SOC Analyst</b>, <b>Penetration Tester</b> and <b>Cybersecurity Analyst</b> roles and internships. Let's talk.</p>
+          <div class="contact-copy">
+            <p class="eyebrow">NEXT EPISODE</p>
+            <h2>Let's build something<br><em>worth defending.</em></h2>
+            <p>Open to <b>SOC Analyst</b>, <b>Penetration Tester</b> and <b>Cybersecurity Analyst</b> roles and internships. If you have a hard network problem, I want to hear about it.</p>
+            <div class="contact-signal"><span class="pulse-dot"></span> Usually replies within a day</div>
+          </div>
           <form id="contactForm" class="contact-form">
-            <input name="name" placeholder="Your name" required aria-label="Your name" />
-            <input name="email" type="email" placeholder="Your email" required aria-label="Your email" />
-            <textarea name="msg" rows="4" placeholder="What are you working on?" required aria-label="Message"></textarea>
-            <button class="btn btn-play" type="submit"><span>Send message</span></button>
+            <label class="field"><span>Your name</span><input name="name" placeholder="Ada Lovelace" required aria-label="Your name" /></label>
+            <label class="field"><span>Your email</span><input name="email" type="email" placeholder="you@company.com" required aria-label="Your email" /></label>
+            <label class="field"><span>What are you working on?</span><textarea name="msg" rows="4" placeholder="A role, a project, a packet mystery…" required aria-label="Message"></textarea></label>
+            <button class="btn btn-play" type="submit"><span>Send message</span><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
           </form>
           <div class="contact-links" id="contactLinks"></div>
         </div>
@@ -166,9 +308,12 @@
   </main>
 
   <footer class="foot">
-    <p>Questions? <a id="footMail"></a></p>
+    <div class="foot-top">
+      <a href="#top" class="foot-brand">NITIN<b>SHUKLA</b></a>
+      <p>Questions? <a id="footMail"></a></p>
+    </div>
     <ul>
-      <li><a href="#projects">Projects</a></li><li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li><li><a href="#recon">Recon</a></li><li><a href="#research">Research</a></li>
       <li><a href="#certs">Certifications</a></li><li><a href="#lab">PCAP Lab</a></li>
       <li><a id="footGh" target="_blank" rel="noopener">GitHub</a></li><li><a id="footCv" download>Resume</a></li>
     </ul>
@@ -194,10 +339,12 @@
     </div>
   </div>
 
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/data.js"></script>
-  <script src="js/pcap.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/data.js?v=20261029"></script>
+  <script src="js/recon.js?v=20261029"></script>
+  <script src="js/pcap.js?v=20261029"></script>
+  <script src="js/main.js?v=20261029"></script>
 </body>
 </html>
