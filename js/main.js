@@ -27,6 +27,7 @@
     compass: '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>',
     terminal: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/>',
     play: '<path d="M7 4v16l13-8z"/>',
+    download: '<path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/>',
     plus: '<path d="M12 5v14M5 12h14"/>',
     chev: '<path d="m6 9 6 6 6-6"/>',
     doc: '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
@@ -354,7 +355,7 @@
     const external = /^https?:/.test(link.href);
     const href = external ? link.href : link.href;
     const attrs = external ? ' target="_blank" rel="noopener"' : " data-close";
-    return `<a class="btn ${i === 0 ? "btn-play" : "btn-info"}" href="${esc(href)}"${attrs}>${svg(i === 0 ? "play" : "github")}<span>${esc(link.label)}</span></a>`;
+    return `<a class="btn ${i === 0 ? "btn-play" : "btn-info"}" href="${esc(href)}"${attrs}>${svg(link.icon || (i === 0 ? "play" : "github"))}<span>${esc(link.label)}</span></a>`;
   }
 
   function openProject(id) {

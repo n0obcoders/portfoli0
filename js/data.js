@@ -68,7 +68,8 @@ window.PORTFOLIO = {
       ],
       tech: ["Kotlin", "Jetpack Compose", "Hilt", "Room", "VpnService", "OkHttp", "Rust (JNI)"],
       links: [
-        { label: "View on GitHub", href: "https://github.com/n0obcoders/Packetra", primary: true }
+        { label: "Download APK", href: "https://github.com/n0obcoders/Packetra/releases/download/build/packetra-v1.19.0-debug.apk", icon: "download", primary: true },
+        { label: "View on GitHub", href: "https://github.com/n0obcoders/Packetra" }
       ]
     },
     {
@@ -90,8 +91,9 @@ window.PORTFOLIO = {
       ],
       tech: ["Kotlin", "Jetpack Compose", "Room", "pure-Kotlin PCAP parser", "Android Keystore"],
       links: [
-        { label: "View on GitHub", href: "https://github.com/n0obcoders/N3-EDITOR", primary: true },
-        { label: "Try the PCAP reader", href: "#lab" }
+        { label: "Download APK", href: "https://github.com/n0obcoders/N3-EDITOR/releases/download/N3-CORE/N3-Core-1.4.0.apk", icon: "download", primary: true },
+        { label: "View on GitHub", href: "https://github.com/n0obcoders/N3-EDITOR" },
+        { label: "Try the PCAP reader", href: "#lab", icon: "terminal" }
       ]
     },
     {
@@ -113,7 +115,8 @@ window.PORTFOLIO = {
       ],
       tech: ["Kotlin", "Android WebView (Chromium)", "OkHttp", "JavaScript bridges disabled"],
       links: [
-        { label: "View on GitHub", href: "https://github.com/n0obcoders/Injectra", primary: true }
+        { label: "Download APK", href: "https://github.com/n0obcoders/Injectra/releases/download/v1.7/injectra-v1.7.apk", icon: "download", primary: true },
+        { label: "View on GitHub", href: "https://github.com/n0obcoders/Injectra" }
       ]
     },
     {
@@ -134,7 +137,9 @@ window.PORTFOLIO = {
       ],
       tech: ["Python", "Telethon", "aiohttp", "Kotlin / WebView", "Chaquopy"],
       links: [
-        { label: "View on GitHub", href: "https://github.com/n0obcoders/SessionGram", primary: true }
+        { label: "Download APK", href: "https://github.com/n0obcoders/SessionGram/releases/download/v2.0/SessionGram-v2.0-arm64-v8a.apk", icon: "download", primary: true },
+        { label: "All 3 builds + source", href: "https://github.com/n0obcoders/SessionGram/releases/tag/v2.0", icon: "cloud" },
+        { label: "View source", href: "https://github.com/n0obcoders/SessionGram" }
       ]
     },
     {
